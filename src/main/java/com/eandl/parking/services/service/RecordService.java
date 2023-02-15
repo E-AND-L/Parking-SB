@@ -10,4 +10,6 @@ public interface RecordService {
     ResponseEntity<List<Record>> getAllRecords();
 
     String saveRecord(RecordDto record);
+
+    String updateRecord(RecordDto record);
 }

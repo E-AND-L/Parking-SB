@@ -23,7 +23,6 @@ public class RecordController {
     @GetMapping
     public ResponseEntity<List<Record>> getAllRecords() {
         try {
-            LOGGER.info("Trayendo todos los registros");
             return recordServiceImp.getAllRecords();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -35,7 +34,16 @@ public class RecordController {
         try {
             return recordServiceImp.saveRecord(record);
         } catch (Exception e) {
-            return "Fallo en el registro.";
+            return "save failed";
+        }
+    }
+
+    @PutMapping
+    public String updateRecord(@RequestBody RecordDto record) {
+        try {
+            return recordServiceImp.updateRecord(record);
+        } catch (Exception e) {
+            return "update failed";
         }
     }
 }

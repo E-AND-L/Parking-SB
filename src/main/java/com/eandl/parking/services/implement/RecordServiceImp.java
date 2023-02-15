@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,12 +43,30 @@ public class RecordServiceImp implements RecordService {
                 newRecord.setVehicleId(vehicle.get());
                 newRecord.setParked(true);
                 recordRepository.save(newRecord);
-                return "Registro creado.";
+                return "record created";
             } else {
-                return "El vehiculo ya se encuentra parqueado.";
+                return "vehicle already parked";
             }
         } else {
-            return "Vehiculo no encontrado";
+            return "vehicle not found";
+        }
+    }
+
+    public String updateRecord(RecordDto record) {
+        // Actualizar registro
+        Optional<Record> recordToUpdate = recordRepository.findById(record.getId());
+        if (recordToUpdate.isPresent()) {
+            if (!recordToUpdate.get().getParked()) {
+                return "vehicle is not parked";
+            }
+            recordToUpdate.get().setParked(false);
+            Date date = new Date();
+            Timestamp timestamp = new Timestamp(date.getTime());
+            recordToUpdate.get().setExitDate(timestamp);
+            recordRepository.save(recordToUpdate.get());
+            return "update success";
+        } else {
+            return "update not found";
         }
     }
 }

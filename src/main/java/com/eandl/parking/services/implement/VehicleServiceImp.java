@@ -8,17 +8,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehicleServiceImp implements VehicleService {
     @Autowired
-    private VehicleRepository vehicleRepository; // findALl();
+    private VehicleRepository vehicleRepository;
 
     public List<Vehicle> findAll() {
         return vehicleRepository.findAll();
     }
 
-    public ResponseEntity<Vehicle> saveVehicle(Vehicle vehicle) {
-        return ResponseEntity.ok(vehicleRepository.save(vehicle));
+    public String saveVehicle(Vehicle vehicle) {
+        Optional<Vehicle> isVehicle = vehicleRepository.findByPlate(vehicle.getPlate());
+        if (isVehicle.isPresent()) {
+            return "vehicle already exists";
+        } else {
+            vehicleRepository.save(vehicle);
+            return "vehicle saved";
+        }
     }
 }

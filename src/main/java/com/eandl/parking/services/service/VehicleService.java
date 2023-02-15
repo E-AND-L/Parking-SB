@@ -9,5 +9,5 @@ public interface VehicleService {
 
     List<Vehicle> findAll();
 
-    ResponseEntity<Vehicle> saveVehicle(Vehicle vehicle);
+    String saveVehicle(Vehicle vehicle);
 }

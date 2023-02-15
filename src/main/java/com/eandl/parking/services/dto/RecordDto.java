@@ -7,4 +7,5 @@ import lombok.Setter;
 @Setter
 public class RecordDto {
     private String plate;
+    private Long id;
 }

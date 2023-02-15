@@ -22,7 +22,6 @@ public class VehicleController {
     @GetMapping
     public ResponseEntity<List<Vehicle>> getAllVehicles() {
         try {
-            LOGGER.info("VEHICLES: Obteniendo todos los vehiculos");
             return ResponseEntity.ok(vehicleServiceImp.findAll());
         } catch (Exception e) {
             return ResponseEntity.status(400).build();
@@ -31,12 +30,11 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<Vehicle> saveVehicle(@RequestBody Vehicle vehicle) {
+    public String saveVehicle(@RequestBody Vehicle vehicle) {
         try {
-            LOGGER.info("VEHICLES: Guardando vehiculo");
             return vehicleServiceImp.saveVehicle(vehicle);
         } catch (Exception e) {
-            return ResponseEntity.status(400).build();
+            return "save failed";
         }
     }
 }
