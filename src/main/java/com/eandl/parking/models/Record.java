@@ -27,7 +27,7 @@ public class Record {
     @Column(name = "exit_date", nullable = true)
     private Timestamp exitDate;
     @Column(name = "is_parked", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
-    private Boolean isParked;
+    private Boolean parked;
     @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicleId;
