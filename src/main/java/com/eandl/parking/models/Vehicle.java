@@ -19,6 +19,6 @@ public class Vehicle {
     private Long id;
     @Column(unique = true, nullable = false, length = 10)
     private String plate;
-    @Column(unique = true, nullable = false, length = 10)
+    @Column(nullable = false, length = 10)
     private String type;
 }
