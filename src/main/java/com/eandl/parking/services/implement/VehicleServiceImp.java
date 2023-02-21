@@ -4,7 +4,6 @@ import com.eandl.parking.models.Vehicle;
 import com.eandl.parking.repositories.VehicleRepository;
 import com.eandl.parking.services.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

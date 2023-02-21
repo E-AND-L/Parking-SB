@@ -1,7 +1,6 @@
 package com.eandl.parking.services.service;
 
 import com.eandl.parking.models.Vehicle;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 

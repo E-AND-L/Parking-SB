@@ -1,6 +1,5 @@
 package com.eandl.parking.services.implement;
 
-import com.eandl.parking.controllers.RecordController;
 import com.eandl.parking.models.Record;
 import com.eandl.parking.models.Vehicle;
 import com.eandl.parking.repositories.RecordRepository;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.sql.Timestamp;
 import java.util.Date;
